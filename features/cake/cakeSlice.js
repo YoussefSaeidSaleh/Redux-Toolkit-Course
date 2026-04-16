@@ -1,4 +1,4 @@
-const createSlice = requir("@reduxjs/toolkit").createSlice;
+const createSlice = require("@reduxjs/toolkit").createSlice;
 
 const initialState = {
   numberOfCakes: 10,
@@ -19,4 +19,4 @@ const cakeSlice = createSlice({
 
 module.exports = cakeSlice.reducer;
 
-module.exports.cakeActions = cakeSlice.action;
+module.exports.cakeActions = cakeSlice.actions;
