@@ -7,7 +7,7 @@ const initialState = {
 const cakeSlice = createSlice({
   name: "cake",
   initialState,
-  reducer: {
+  reducers: {
     ordered: (state) => {
       state.numberOfCakes--;
     },
