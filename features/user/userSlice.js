@@ -8,11 +8,37 @@ const initialState = {
   error: "",
 };
 
-const fetchUsers = createAsyncThunk("user/fetchUsers", () => {
-  return axios.get("").then((res) => res.data);
+const fetchUsers = createAsyncThunk("user/fetchUsers", async (_, thunkAPI) => {
+  try {
+    const res = await axios.get("https://jsonplaceholder.typicode.com/users");
+    return res.data.map((user) => user.id);
+  } catch (err) {
+    console.log("AXIOS ERROR:", err.message);
+    console.log("CODE:", err.code);
+    return thunkAPI.rejectWithValue(err.message);
+  }
 });
 
 const userSlice = createSlice({
   name: "user",
   initialState,
+  extraReducers: (builder) => {
+    builder.addCase(fetchUsers.pending, (state) => {
+      state.loading = true;
+    });
+    builder.addCase(fetchUsers.fulfilled, (state, action) => {
+      state.loading = false;
+      state.data = action.payload;
+      state.error = "";
+    });
+    builder.addCase(fetchUsers.rejected, (state, action) => {
+      state.loading = false;
+      state.data = [];
+      state.error = action.payload || action.error.message;
+    });
+  },
 });
+
+module.exports = userSlice.reducer;
+
+module.exports.fetchUsers = fetchUsers;

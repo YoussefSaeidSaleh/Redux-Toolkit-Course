@@ -12,7 +12,7 @@
   "type": "commonjs",
   "dependencies": {
     "@reduxjs/toolkit": "^2.11.2",
-    "axios": "^1.15.2",
+    "axios": "^1.13.6",
     "redux-logger": "^3.0.6"
   }
 }
