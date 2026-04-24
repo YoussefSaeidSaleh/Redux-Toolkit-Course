@@ -8,6 +8,10 @@ const initialState = {
   error: "",
 };
 
+const fetchUsers = createAsyncThunk("user/fetchUsers", () => {
+  return axios.get("").then((res) => res.data);
+});
+
 const userSlice = createSlice({
   name: "user",
   initialState,
