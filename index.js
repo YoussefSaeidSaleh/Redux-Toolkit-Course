@@ -1,9 +1,13 @@
+
+
 const cakeActions = require("./features/cake/cakeSlice").cakeActions;
 const icecreamActions =
   require("./features/iceCream/icecreamSlice").icecreamActions;
 
 const store = require("./app/store");
 const { fetchUsers } = require("./features/user/userSlice");
+
+
 
 console.log("Initial State", store.getState());
 const unsubscribe = store.subscribe(() =>

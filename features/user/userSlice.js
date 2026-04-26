@@ -10,8 +10,11 @@ const initialState = {
 
 const fetchUsers = createAsyncThunk("user/fetchUsers", async (_, thunkAPI) => {
   try {
-    const res = await axios.get("https://jsonplaceholder.typicode.com/users");
-    return res.data.map((user) => user.id);
+    // const res = await axios.get("https://jsonplaceholder.typicode.com/users");
+    const res = await axios.get("https://dummyjson.com/users");
+
+    // return res.data.map((user) => user.id);
+    return res.data.users.map((user) => user.id);
   } catch (err) {
     console.log("AXIOS ERROR:", err.message);
     console.log("CODE:", err.code);
