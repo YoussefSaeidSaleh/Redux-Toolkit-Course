@@ -11,7 +11,7 @@ const initialState = {
 const fetchUsers = createAsyncThunk("user/fetchUsers", async (_, thunkAPI) => {
   try {
     // const res = await axios.get("https://jsonplaceholder.typicode.com/users");
-    const res = await axios.get("https://dummyjson.com/users");
+    const res = await axios.get("https://dummyjson.comf/users");
 
     // return res.data.map((user) => user.id);
     return res.data.users.map((user) => user.id);
